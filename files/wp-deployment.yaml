@@ -37,6 +37,8 @@ spec:
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
+        - name: WORDPRESS_DB_USER
+          value: wordpress      # Check if this user exists
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
