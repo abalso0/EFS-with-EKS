@@ -171,6 +171,37 @@ Common issues and solutions:
 2. **CSI driver not working**: Verify IAM roles and policies
 3. **PVC stuck in pending**: Check storage class configuration
 
+
+WORDPRESS_DB_USER:
+```    
+- name: WORDPRESS_DB_USER
+  value: "root"
+```
+ 
+- This specifies the MySQL user that WordPress will use to connect to the database
+- By default, if not specified, WordPress might try to use different users
+- Setting it explicitly to "root" ensures we're using the same user that was configured in the MySQL deployment
+
+WORDPRESS_DB_NAME:
+```    
+- name: WORDPRESS_DB_NAME
+  value: "wordpress"
+```
+        
+- This specifies the name of the database WordPress should use
+- Without this, WordPress might try to create a database with a different name
+- Explicitly setting it ensures consistency with the MySQL setup
+
+WORDPRESS_DEBUG:
+```
+- name: WORDPRESS_DEBUG
+  value: "1"
+```
+    
+- This enables WordPress debug mode
+- When enabled, WordPress will display more detailed error messages
+- This is particularly helpful during troubleshooting to understand why the container might be crashing
+
 ## References
 
 - [AWS EFS CSI Driver](https://github.com/kubernetes-sigs/aws-efs-csi-driver)
